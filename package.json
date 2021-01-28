@@ -10,8 +10,11 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "numeral": "^2.0.6",
     "react": "16.13.1",
-    "react-native": "0.63.4"
+    "react-native": "0.63.4",
+    "shuffle-array": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
