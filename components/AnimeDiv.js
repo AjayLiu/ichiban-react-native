@@ -6,6 +6,7 @@ import {
   View,
   Text,
   StatusBar,
+  Pressable,
   TouchableOpacity,
   Image
 } from 'react-native';
@@ -15,26 +16,31 @@ export default function AnimeDiv({ obj, clickCallback, gameover }) {
   var fanCount = numeral(obj.members).format("0.000a");
 
   return (
-    <View>
+    <View style={styles.container}>
       <TouchableOpacity onPress={() => clickCallback()} >
         {/* <Text>{obj.image_url}</Text> */}
         <Image style={styles.img} source={{uri: obj.image_url}}></Image>
-        <Text>{obj.title}</Text>
+        <Text style={styles.text}>{obj.title}</Text>
       </TouchableOpacity>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    paddingTop: 50,
+  container:{
+    // flex: 1,
+    height: "40%",
+    // borderWidth: 4,
+    // borderColor: "green",
+    // borderRadius: 6,
   },
-  tinyLogo: {
-    width: 50,
-    height: 50,
+  text:{
+    color:"white",
+    textAlign:'center',
+    margin:10
   },
   img: {
-    width: 66,
-    height: 58,
+    // height: 100,
+    height: "80%"
   },
 });

@@ -15,7 +15,7 @@ import Game from './components/Game'
 export default App = () => {
   return(
     <View style={styles.container}>
-      <Header title="Ichiban" />
+      <Header />
       <Game/>
     </View>
   );
@@ -24,5 +24,8 @@ export default App = () => {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
+    backgroundColor: "#252934",
+    color:"white",
+
   }
 })

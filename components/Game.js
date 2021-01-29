@@ -8,7 +8,8 @@ import {
   Text,
   StatusBar,
   Button,
-  TouchableOpacity
+  TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 
 import AnimeDiv from './AnimeDiv'
@@ -133,76 +134,40 @@ export default function Game() {
     
     
     return (
-      <View>
+      <View style={styles.container}>
         {
         loading?
-          <Text>Loading</Text>
+          <Text style={styles.text}>Loading</Text>
         :
-         <>
-          <Text>Which Anime Has More Fans (according to MyAnimeList.net)?</Text>
-          <Text>Score: {score}</Text>
+        <View >
+          <Text style={styles.text}>Which Anime Has More Fans (according to MyAnimeList.net)?</Text>
+          <Text style={styles.text}>Score: {score}</Text>
           {gameover && gameoverElem}
-          <View>
+          <View style={styles.battlefield}>
             <AnimeDiv clickCallback={()=>onAnimeClick(true)} obj = {champ} gameover={gameover}/>
             <Text>or</Text>
             <AnimeDiv clickCallback={()=>onAnimeClick(false)} obj = {challenger} gameover={gameover}/>
           </View>
-         </> 
+         </View> 
         }
       </View>
     )
 
-    // const gameoverElem = (
-    //   <div className={styles.gameoverElem} onClick={()=>{setResetGame(true)}}>
-    //     <div className={styles.gameoverLabel}>
-    //       Game Over
-    //     </div>
-    //     <div className={styles.gameoverBtn}>Press to play again</div>
-    //   </div>
-    // )
-
-    // return (
-    //     <main>
-    //         { 
-    //         loading ? 
-    //         <div>
-    //             Loading...
-    //         </div>
-    //         :
-    //         <>
-    //         <h1 className={styles.prompt}>Which Anime Has More Fans (according to MyAnimeList.net)?</h1>
-    //         <h2 className={styles.score}>
-    //           Score: {score}              
-    //         </h2>
-
-    //         <div>
-    //           {
-    //             width <= mobileThreshold && gameover && gameoverElem            
-    //           }
-    //         </div>
-
-    //         <div className = {styles.battlefield}>
-    //             {
-    //             <>            
-    //             <AnimeDiv clickCallback={()=>onAnimeClick(true)} obj = {champ} gameover={gameover}/>
-    //             <div style={{  marginTop: "75px"}}>
-    //               {
-    //                 //Desktop gameover button
-    //                 width <= mobileThreshold || (gameover ? 
-    //                 gameoverElem
-    //                 :
-    //                 <div id={styles.orLabel}>{"OR"}</div>
-    //               )}
-    //             </div>
-    //             <AnimeDiv clickCallback={()=>onAnimeClick(false)} obj = {challenger} gameover={gameover}/>                        
-    //             </>
-    //             }              
-    //         </div> 
-    //         </>
-    //         }
-
-    //     </main>
-
-    // );
-
 }
+
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+
+  },
+  text:{
+    textAlign:'center',
+    color: "white",
+    margin: 2,
+  },
+  battlefield:{
+    marginTop: 20,
+    height: Dimensions.get('window').height,
+  }
+
+});
