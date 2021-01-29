@@ -7,6 +7,8 @@ import {
   View,
   Text,
   StatusBar,
+  Button,
+  TouchableOpacity
 } from 'react-native';
 
 import AnimeDiv from './AnimeDiv'
@@ -122,6 +124,14 @@ export default function Game() {
       }
     }
 
+    const gameoverElem = (
+      <Button title="Game Over" onPress={()=>setResetGame(true)}>
+
+      </Button>
+    )
+
+    
+    
     return (
       <View>
         {
@@ -131,10 +141,11 @@ export default function Game() {
          <>
           <Text>Which Anime Has More Fans (according to MyAnimeList.net)?</Text>
           <Text>Score: {score}</Text>
+          {gameover && gameoverElem}
           <View>
             <AnimeDiv clickCallback={()=>onAnimeClick(true)} obj = {champ} gameover={gameover}/>
             <Text>or</Text>
-            {/* <AnimeDiv clickCallback={()=>onAnimeClick(false)} obj = {challenger} gameover={gameover}/> */}
+            <AnimeDiv clickCallback={()=>onAnimeClick(false)} obj = {challenger} gameover={gameover}/>
           </View>
          </> 
         }

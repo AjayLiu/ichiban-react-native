@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   SafeAreaView,
   StyleSheet,
@@ -5,6 +6,8 @@ import {
   View,
   Text,
   StatusBar,
+  TouchableOpacity,
+  Image
 } from 'react-native';
 
 export default function AnimeDiv({ obj, clickCallback, gameover }) {
@@ -13,11 +16,25 @@ export default function AnimeDiv({ obj, clickCallback, gameover }) {
 
   return (
     <View>
-      <View onClick={() => clickCallback()} >
-        <Image className={styles.animeImg} source={{uri: obj.image_url}}></Image>
+      <TouchableOpacity onPress={() => clickCallback()} >
+        {/* <Text>{obj.image_url}</Text> */}
+        <Image style={styles.img} source={{uri: obj.image_url}}></Image>
         <Text>{obj.title}</Text>
-        {/* {obj.reveal && <Text className={styles.fanCount + ' ' + (gameover ? (obj.higher ? styles.higher : styles.lower) : styles.neutral)}>Fans: {fanCount}</p>} */}
-      </View>
+      </TouchableOpacity>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 50,
+  },
+  tinyLogo: {
+    width: 50,
+    height: 50,
+  },
+  img: {
+    width: 66,
+    height: 58,
+  },
+});
