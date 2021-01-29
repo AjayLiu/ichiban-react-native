@@ -21,6 +21,10 @@ export default function AnimeDiv({ obj, clickCallback, gameover }) {
         {/* <Text>{obj.image_url}</Text> */}
         <Image style={styles.img} source={{uri: obj.image_url}}></Image>
         <Text style={styles.text}>{obj.title}</Text>
+        {obj.reveal &&
+          <Text style={(gameover ? (obj.higher ? styles.higher : styles.lower) : styles.neutral)}>Fans: {fanCount}</Text>
+        }
+
       </TouchableOpacity>
     </View>
   )
@@ -41,6 +45,19 @@ const styles = StyleSheet.create({
   },
   img: {
     // height: 100,
-    height: "80%"
+    height: "70%",
   },
+  higher:{
+    color:"green",
+    textAlign:'center'
+  },
+  lower:{
+    color:'red',
+    textAlign:'center'
+  },
+  neutral:{
+    color: 'white',
+    textAlign:'center',
+  },
+
 });

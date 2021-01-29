@@ -145,7 +145,6 @@ export default function Game() {
           {gameover && gameoverElem}
           <View style={styles.battlefield}>
             <AnimeDiv clickCallback={()=>onAnimeClick(true)} obj = {champ} gameover={gameover}/>
-            <Text>or</Text>
             <AnimeDiv clickCallback={()=>onAnimeClick(false)} obj = {challenger} gameover={gameover}/>
           </View>
          </View> 
