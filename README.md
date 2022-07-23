@@ -95,22 +95,44 @@ NOTE: What I did was a little tricky because I didn't want to expose the keystor
     Remember what you put for the keystore password. 
     This should create a file called my-upload-key.keystore
   
-2. Move this keystore to /android/app/
+1. Move this keystore to /android/app/
 
-3. (FOR WINDOWS) Go to ~/.gradle/gradle.properties (if the file doesn't exist, create a grade.properties) (also ~ means your User path, so something like C:\Users\Bob) and enter
+1. (FOR WINDOWS) Go to ~/.gradle/gradle.properties (if the file doesn't exist, create a grade.properties) (also ~ means your User path, so something like C:\Users\Bob) and enter
     ```
     MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
     MYAPP_UPLOAD_KEY_ALIAS=my-key-alias
     MYAPP_UPLOAD_STORE_PASSWORD= [ENTER YOUR PASSWORD HERE]
     MYAPP_UPLOAD_KEY_PASSWORD= [ENTER YOUR PASSWORD HERE]
     ```
-4. Double check that you are in the /android/ directory and run
+1. Double check that you are in the /android/ directory and run
     ```
     ./gradlew bundleRelease
     ```
-5. Your .apk and .aab files will be generated in android/app/build/outputs/
+    
+1. If that didn't work then it's probably something with Windows and it's not reading from ~/.gradle/gradle.properties. In that case, just go to your project's android/app/build.gradle and under this code block:
+    ```
+    if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+      storeFile file(MYAPP_UPLOAD_STORE_FILE)
+      storePassword MYAPP_UPLOAD_STORE_PASSWORD
+      keyAlias MYAPP_UPLOAD_KEY_ALIAS
+      keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+    }
+    ```
+    
+    add in:
+    
+    ```
+    storeFile file('my-upload-key.keystore')
+    storePassword "[YOUR PASSWORD]"
+    keyAlias "my-key-alias"
+    keyPassword "[YOUR PASSWORD]"
+    ```
+    
+    and fill in [YOUR PASSWORD] as you did in step 1.
+    
+1. Your .apk and .aab files will be generated in android/app/build/outputs/
 
-6. Choose one of them to upload to Google Play Store! :tada:
+1. Choose one of them to upload to Google Play Store! :tada:
    
 <!-- LICENSE -->
 ## License
