@@ -80,6 +80,8 @@ To test on Android, use:
     
 Make sure to have an [AVD](https://developer.android.com/studio/run/managing-avds) installed
 
+⚠️ ALSO MAKE SURE YOU USE JDK 13 FOR THIS PROJECT, IF YOU'RE ON WINDOWS MAKE SURE YOU GO TO YOUR ENVIRONMENT VARIABLES AND DOUBLE CHECK THAT JAVA_HOME POINTS TO `C:\Program Files\Java\jdk-13.0.2`
+
 ### Publishing
 
 https://reactnative.dev/docs/signed-apk-android
